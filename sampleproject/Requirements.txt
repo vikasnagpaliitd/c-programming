@@ -1,0 +1,8 @@
+Ticket Management System
+
+Customer raises complaints (tickets).
+
+
+Two entities
+  - Customer  (CRUD)
+  - Tickets  (CRUD)
