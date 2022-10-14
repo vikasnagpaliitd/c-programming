@@ -1,7 +1,6 @@
 /* Binary Tree : Iterative Post order Traversal
  * Note : uses stack functions declared in stack.h
  * Version 1.0
- * Author: Vikas Nagpal : http://anuttaralearning.com/
  */
 
 #include <stdio.h>

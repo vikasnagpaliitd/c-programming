@@ -1,7 +1,6 @@
 /* Program (Level 2): Stack using (Statically allocated) Array
  * Follows modular breakup into functions, and encapsulation of data into
  *   a struct
- * Author: Vikas Nagpal : http://anuttaralearning.com/
  */
  
 #include <stdio.h>
