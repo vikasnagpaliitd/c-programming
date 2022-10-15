@@ -10,9 +10,11 @@ int main(int argc, char *argv[ ])
 
   int choice, ret;
 
+  char filename[MAX_FILENAME_LENGTH];
+
   //TBD : Add check on argc
 
-  // names of customer.csv and ticket.csv can read from config file
+  // default names of customer.csv and ticket.csv can read from config file
   //load_config_file_data(argv[1]); // to be defined in config.c
   
  
@@ -33,13 +35,18 @@ int main(int argc, char *argv[ ])
     switch(choice)
     {
       case 1: // Load Customer Data From File
-          // TBD: hard coded for now. should come from argv or config file
-          ret = load_cust_data("customer.csv");
+      {
+          printf("Enter filename: ");
+          scanf("%s", filename);
+
+          ret = load_cust_data(filename);
           if (ret == FAILURE)
              printf("Failed to load data\n");
           else
              printf("Loaded data successfully\n");
+
           break;
+      }
 
       case 2: // Save Customer Data From File
           break;
@@ -67,6 +74,7 @@ int main(int argc, char *argv[ ])
 
       case 7: // Print Customer List
       {
+         display_cust_data();
          break;
       }
 

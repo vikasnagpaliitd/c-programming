@@ -3,3 +3,4 @@
 #define FAILURE 0
 
 #define MAX_LINE_LENGTH 256
+#define MAX_FILENAME_LENGTH 256

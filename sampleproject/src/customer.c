@@ -7,7 +7,7 @@
 
 // Global data structure
 customer_t cust_list[MAX_CUST_NUM];
-int num_cust;
+int num_cust = 0;
 
 
 /* This function reads data from file_name and stores in global cust_list 
@@ -29,7 +29,6 @@ int load_cust_data(char *file_name )
 
 
   fp = fopen(file_name, "r");
-
   if (fp == NULL)
   {
       printf("could not open file");
@@ -37,7 +36,9 @@ int load_cust_data(char *file_name )
       return FAILURE;
   }
 
-  /* Process data */
+  num_cust = 0; // number of customer records (global variable)
+
+  // Read one line at a time, parsing into customer record 
   while((ret_str = fgets(line, MAX_LINE_LENGTH, fp)) != NULL)
   {
      // Remove the newline at end
@@ -46,7 +47,16 @@ int load_cust_data(char *file_name )
      // id, name, age, addresss
      ret = sscanf(line, "%d,%[^,],%d,%[^,]", &id, name, &age, addr);
      if (ret == 4)
+     {
         printf("id=%d, name=[%s], age=%d, address =[%s]\n", id, name, age, addr);
+        // Store in array of records (TBD: check array bound exceed error)
+        cust_list[num_cust].id = id;  
+        cust_list[num_cust].age = age;  
+        strcpy(cust_list[num_cust].name, name);
+        strcpy(cust_list[num_cust].address, addr);
+
+        num_cust++;
+     }
      else
         printf("fscanf could not read 4 values : Ignoring line=%s\n", line);
   }
@@ -54,6 +64,16 @@ int load_cust_data(char *file_name )
   /* Close file */
   fclose(fp);
   return SUCCESS;   
+}
+
+void display_cust_data()
+{
+  int i;
+
+  for(i = 0; i < num_cust; i++)
+     printf("cust[%d] = <%d, %s, %d, %s>\n", i, 
+        cust_list[i].id, cust_list[i].name,
+        cust_list[i].age, cust_list[i].address);
 }
 
 #if 0
