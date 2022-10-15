@@ -14,6 +14,8 @@ int main(int argc, char *argv[ ])
 
   char filename[MAX_FILENAME_LENGTH];
 
+  customer_t cust; // for input/output
+
   //TBD : Add check on argc
 
   // default names of customer.csv and ticket.csv can read from config file
@@ -64,8 +66,18 @@ int main(int argc, char *argv[ ])
           break;
       }
 
-      case 3: // Search Customer Record
+      case 3: // Add Customer Record
       {
+              
+         printf("Enter id, name, age, address :\n");
+         //TBD : Allow spaces in cust.name and cust.address.. if needed use fgets()
+         // DONT USE gets(). use fgets(line, MAX_LINE_LENGTH, stdin)
+         scanf("%d%s%d%s", &(cust.id), cust.name, &(cust.age), cust.address);
+         ret = create_cust(&cust);
+         if (ret == FAILURE)
+            printf("Failed to add customer\n");
+         else
+            printf("Customer added successfully\n");
          break;
       }
 
@@ -81,6 +93,11 @@ int main(int argc, char *argv[ ])
 
       case 6: // Delete Customer Record
       {
+         /*
+            1) Search the record. 
+            2) Copy the last record at (now) vacant slot
+            3) decrement num
+         */
 
          break;
       }

@@ -9,6 +9,21 @@
 customer_t cust_list[MAX_CUST_NUM];
 int num_cust = 0;
 
+// create_cust(): Create Customer Function:
+//option 1: int create_cust(customer_t *p_cust)
+// option 2: int create_cust(id, name, age, address)
+
+// Prefer option1
+int create_cust(const customer_t *p_cust)
+{
+   // TBD : check for array being full
+   // Add at end
+   cust_list[num_cust] = *p_cust; // struct assignment
+   num_cust++;
+   return SUCCESS;
+}
+
+
 
 /* This function reads data from file_name and stores in global cust_list 
    data structure. Returns SUCCESS/FAILURE */

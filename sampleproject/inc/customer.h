@@ -5,9 +5,6 @@
 
 #define MAX_CUST_NUM 50
 
-int load_cust_data(char *file_name );
-int save_cust_data(char *file_name );
-void display_cust_data();
 
 typedef struct customer
 {
@@ -17,5 +14,10 @@ typedef struct customer
   char address[MAX_CUST_ADDR_LEN]; 
 } customer_t;
 
+// Function prototypes
+int load_cust_data(char *file_name );
+int save_cust_data(char *file_name );
+void display_cust_data();
+int create_cust(const customer_t *p_cust);
 
 
