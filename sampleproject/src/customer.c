@@ -66,6 +66,29 @@ int load_cust_data(char *file_name )
   return SUCCESS;   
 }
 
+// Returns SUCCESS/FAILURE
+int save_cust_data(char *file_name )
+{
+  FILE *fp;
+  int i;
+
+  fp = fopen(file_name, "w");
+  if (fp == NULL)
+  {
+      printf("could not open file");
+      perror(file_name);
+      return FAILURE;
+  }
+
+  for(i = 0; i < num_cust; i++)
+     fprintf(fp, "%d, %s, %d, %s\n", i, cust_list[i].name,
+        cust_list[i].age, cust_list[i].address);
+
+  /* Close file */
+  fclose(fp);
+  return SUCCESS;   
+}
+
 void display_cust_data()
 {
   int i;

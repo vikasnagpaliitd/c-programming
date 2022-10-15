@@ -1,9 +1,11 @@
 // Driver code : invokes customer operations and ticket operations
 #include <stdio.h>
+#include <stdlib.h>
 #include "common.h"
 #include "customer.h"
 #include "ticket.h"
 #include "config.h"
+
 
 int main(int argc, char *argv[ ])
 {
@@ -27,6 +29,7 @@ int main(int argc, char *argv[ ])
     printf(" 5) Update Customer Record\n");
     printf(" 6) Delete Customer Record\n");
     printf(" 7) Print Customer List\n");
+    printf(" 8) Exit \n");
     //TBD : expand menu for Ticket operations\n");
 
     printf(" Enter option : ");
@@ -49,7 +52,17 @@ int main(int argc, char *argv[ ])
       }
 
       case 2: // Save Customer Data From File
+      {
+          printf("Enter filename: ");
+          scanf("%s", filename);
+
+          ret = save_cust_data(filename);
+          if (ret == FAILURE)
+             printf("Failed to save data\n");
+          else
+             printf("Saved data successfully\n");
           break;
+      }
 
       case 3: // Search Customer Record
       {
@@ -75,6 +88,13 @@ int main(int argc, char *argv[ ])
       case 7: // Print Customer List
       {
          display_cust_data();
+         break;
+      }
+
+      case 8: // Exit
+      {
+         // optional TBD : ask user whether he wishes to save before exiting....
+         exit(0);
          break;
       }
 
