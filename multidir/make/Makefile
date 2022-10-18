@@ -1,8 +1,7 @@
-PROJ=$(HOME)/github/c-programming/multidir
-INC = $(PROJ)/inc
-SRC = $(PROJ)/src
-BIN = $(PROJ)/bin
-OBJ = $(PROJ)/obj
+INC = ../inc
+SRC = ../src
+BIN = ../bin
+OBJ = ../obj
 CFLAGS = -c -g -Wall
 LFLAGS = 
 GCC = gcc
@@ -20,6 +19,6 @@ $(OBJ)/stack.o : $(SRC)/stack.c
 	$(GCC) -o $(OBJ)/stack.o $(CFLAGS) $(SRC)/stack.c $(IFLAGS)
 
 clean :
-	rm $(BIN)/output
-	rm $(OBJ)/*.o
+	rm -f $(BIN)/output
+	rm -f $(OBJ)/*.o
 
